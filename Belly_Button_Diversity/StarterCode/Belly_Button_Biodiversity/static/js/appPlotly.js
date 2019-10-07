@@ -40,7 +40,8 @@ d3.json("/samples/"+sample).then(function(response) {
     var data = [{
       type: "pie",
       values:response.sample_values.slice(0,10),
-      labels : response.otu_ids.slice(0,10)
+      labels : response.otu_ids.slice(0,10),
+      hoverinfo: response.otu_labels.slice(0,10)
       }];
 
       var layout = {
@@ -56,7 +57,8 @@ d3.json("/samples/"+sample).then(function(response) {
 var trace1 = {
   x: response.otu_ids,
   y: response.sample_values,
-//  text: response.otu_labels,
+  text: response.otu_labels,
+//  hoverinfo: response.otu_labels,
   mode: 'markers',
   marker: {
     size: response.sample_values,
